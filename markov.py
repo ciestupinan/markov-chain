@@ -58,7 +58,6 @@ def make_chains(text_string):
 
 def make_text(chains):
     """Return text from chains."""
-    
     # picking a random key (tuple) from the dict
     key = choice(list(chains.keys()))
     sentence = [key[0], key[1]]
@@ -69,16 +68,17 @@ def make_text(chains):
     while next_word is not None:
         # making tuple from first key's second word and first keys random value
         next_key = (key[1], next_word)
-        print(next_key)
         # picking random word from next key's list
         next_word = choice(list(chains[next_key]))
         # appending next next word to sentence list
         sentence.append(next_word)
         key = next_key
 
+        if next_word == 'am?':
+            break
     
 
-    # return " ".join(words)
+    return " ".join(sentence)
 
 
 input_path = "green-eggs.txt"
